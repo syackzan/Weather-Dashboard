@@ -1,0 +1,31 @@
+main {
+    background-color: gray;
+    height: 100vh;
+}
+
+/* Margin Set Search Input and Respective Button */
+.marginTop {
+    margin: 10px 0px;
+}
+
+/* Margin Set Search buttons randomized */
+.marginBottom{
+    margin: 5px 0px;
+}
+
+/* Border for Buttons */
+.borderA {
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
+/* Border To separate Lower and Upper Buttons in Search for City */
+#cityBox {
+    border-top: solid 2px black;
+}
+
+#mainSelection {
+    border: solid 3px black;
+    box-sizing: border-box;
+}
+
