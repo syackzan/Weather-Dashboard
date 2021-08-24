@@ -26,6 +26,7 @@
 
 #smallBox {
     width: 150px;
-    margin: 0px 20px;
+    min-height: 207px;
+    margin: 5px 20px;
 }
 
