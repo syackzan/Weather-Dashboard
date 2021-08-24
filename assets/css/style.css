@@ -1,3 +1,5 @@
+
+
 main {
     background-color: gray;
     height: 100vh;
@@ -27,5 +29,10 @@ main {
 #mainSelection {
     border: solid 3px black;
     box-sizing: border-box;
+}
+
+#smallBox {
+    width: 150px;
+    margin: 0px 20px;
 }
 

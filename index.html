@@ -8,7 +8,7 @@
     
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/jass.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
     
@@ -16,9 +16,9 @@
         <h1 style="text-align: center; color: white">Weather dashboard</h1>
     </header>
 
-    <main class="container-fluid d-flex border-1 border-primary">
+    <main class="container-fluid">
         <section class="row w-100 h-100">
-            <div id="box1" class="col-12 col-md-3 d-flex flex-column align-content center">
+            <div id="box1" class="col-12 col-md-3 d-flex flex-column align-content-center">
                 <h2 class="marginTop">Search for a City:</h2>
                 <input class="marginTop borderA" type="text" id="inputSearch" placeholder="Search a city...">
                 <input class="marginTop borderA bg-primary" type="button" id="buttonS" value="Click Me!">
@@ -33,7 +33,7 @@
                     <button class="marginBottom borderA bg-secondary w-100">Hello</button>
                 </div>   
             </div>
-            <div id="box2" class="col-12 col-md-9 d-flex flex-column justify-content-center align-content-center">
+            <div id="box2" class="col-12 col-md-9 flex-column">
                 <div id="mainSelection" class="row d-flex flex-column w-100 h-50 m-3 p-3">
                     <h3>City with Date</h3>
                     <br>
@@ -45,17 +45,21 @@
                     <br>
                     <p>UV Index:</p>
                 </div>
-                <div class="d-flex row flex-column w-100 h-50 m-3 p-3" >
-                    <div class="col-12 col-md-2">
-                        <h4 class="d-flex w-100 h-25">This Way!</h4>
-                    </div>
-                    <div class="col-12 col-md-10">
-                        <div class="row">
-                        <div class="col-12 col-md-2.4 m-3"></div>
-                        <div class="col-12 col-md-2.4 m-3"></div>
-                        <div class="col-12 col-md-2.4 m-3"></div>
-                        <div class="col-12 col-md-2.4 m-3"></div>
-                        <div class="col-12 col-md-2.4 m-3"></div>
+                <div class="row d-flex flex-column">
+                    <h4 class="d-flex col-md-2 w-100 pl-4">This Way!</h4>
+                    <div class="col-12 col-md-10justify-content-centerv pl-4">
+                        <div class="row justify-content-between">
+                            <div id="smallBox" class="borderA">
+                                <p>Date:</p>
+                                <p>Weather Icon</p>
+                                <p>Temp</p>
+                                <p>Wind</p>
+                                <p>Humidity</p>
+                            </div>
+                            <div id="smallBox" class="d-flex borderA"></div>
+                            <div id="smallBox" class="d-flex borderA"></div>
+                            <div id="smallBox" class="d-flex borderA"></div>
+                            <div id="smallBox" class="d-flex borderA"></div>
                         </div>
                     </div>
                 </div>
