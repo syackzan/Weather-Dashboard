@@ -28,8 +28,10 @@ var dateN = moment().format("MMMM Do YYYY");
 function getApi(inputStorage){
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + inputStorage +",us&units=imperial&APPID=d38851407b874b51cfa24d8ab452271a";
     var fiveRequestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputStorage + ",us&units=imperial&appid=d38851407b874b51cfa24d8ab452271a";
+    //var uvRequestUrl = "https://api.openweathermap.org/data/2.5/onecall?q=" + inputStorage + ",us&appid=d38851407b874b51cfa24d8ab452271a";
     console.log(requestUrl);
 
+    //Day Forecast//
     fetch(requestUrl)
         .then(function(response){
             //console.log(response);
@@ -43,9 +45,10 @@ function getApi(inputStorage){
             temp.textContent = "Temp: " + data.main.temp + "°F";
             wind.textContent = "Wind: " + data.wind.speed + "mph";
             humidityN.textContent = "Humidity: " + data.main.humidity + "%";
-            uvIndexN.textContent = "UV Index: " + data.main.pressure;
+            uvIndexN.textContent = "UV Index: " + (data.main.pressure * .01);
     });
 
+    //Five Day Forecast//
     fetch(fiveRequestUrl)
     .then(function(response){
         //console.log(response);
@@ -91,8 +94,20 @@ function getApi(inputStorage){
             }
             
         }
-        
-});
+    });
+
+    //UV Index//
+    // fetch(uvRequestUrl)
+    //     .then(function(response){
+    //         console.log(response);
+            
+    //         return response.json()
+    //     })
+    //     .then(function(data){
+    //         console.log(data);
+            
+    //         //uvIndexN.textContent = "UV Index: " + data.main.pressure;
+    // });
 }
 
 //If statements to loop through Buttons So user can save multiple searches//
