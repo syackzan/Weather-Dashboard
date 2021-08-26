@@ -8,6 +8,19 @@
     margin: 5px 0px;
 }
 
+header {
+    background-image: linear-gradient(to right, blue, white);
+    border-bottom: 2px solid black;
+}
+
+button {
+    letter-spacing: 2px;
+}
+
+.mup {
+    margin-bottom: 35px;
+}
+
 /* Border for Buttons */
 .borderA {
     border: solid 2px black;
@@ -22,6 +35,8 @@
 #mainSelection {
     border: solid 3px black;
     box-sizing: border-box;
+    background-color: lightgray;
+
 }
 
 #smallBox {
