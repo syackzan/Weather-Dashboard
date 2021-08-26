@@ -7,11 +7,21 @@ var wind = document.getElementById("windN");
 var humidityN = document.getElementById("humidityN");
 var uvIndexN = document.getElementById("uvIN");
 var fiveDay = document.getElementById("fiveDay");
+var counter = 0;
+
+var button1 = document.getElementById("button1");
+var button2 = document.getElementById("button2");
+var button3 = document.getElementById("button3");
+var button4 = document.getElementById("button4");
+var button5 = document.getElementById("button5");
+var button6 = document.getElementById("button6");
+var button7 = document.getElementById("button7");
+var button8 = document.getElementById("button8");
 
 var placeholder = "Seattle";
 
 var dateN = moment().format("MMMM Do YYYY");
-console.log(dateN);
+//console.log(dateN);
 
 
 function getApi(inputStorage){
@@ -21,12 +31,12 @@ function getApi(inputStorage){
 
     fetch(requestUrl)
         .then(function(response){
-            console.log(response);
+            //console.log(response);
             
             return response.json()
         })
         .then(function(data){
-            console.log(data);
+            //console.log(data);
             
             city.textContent = data.name + " (" + dateN + ")";
             temp.textContent = "Temp: " + data.main.temp + "°F";
@@ -37,12 +47,14 @@ function getApi(inputStorage){
 
     fetch(fiveRequestUrl)
     .then(function(response){
-        console.log(response);
+        //console.log(response);
         
         return response.json()
     })
     .then(function(data){
-        console.log(data);
+        //console.log(data);
+        fiveDay.innerHTML = "";
+        
         for (var i = 0; i < data.list.length; i++){
             
             if ((i % 8) === 0){
@@ -62,7 +74,6 @@ function getApi(inputStorage){
             tempF.textContent = "Temp: " + data.list[i].main.temp + "°F";
             windF.textContent = "Wind: " + data.list[i].wind.speed + "mph";
             humidityF.textContent = "Humi: " + data.list[i].main.humidity + "%";
-            console.log(dateF);
 
             futureBox.classList.add("borderA");
             futureBox.classList.add("p-3");
@@ -83,12 +94,101 @@ function getApi(inputStorage){
 });
 }
 
+function storeSearch(inputStorage){
+
+
+counter++;
+console.log(counter);
+
+if (counter === 1){
+    button1.textContent = inputStorage;
+    localStorage.setItem("button1", button1.textContent)
+}
+
+if(counter === 2){
+    button2.textContent = inputStorage;
+    localStorage.setItem("button2", button2.textContent)
+}
+
+if(counter === 3){
+    button3.textContent = inputStorage;
+    localStorage.setItem("button3", button3.textContent)
+}
+
+if(counter === 4){
+    button4.textContent = inputStorage;
+    localStorage.setItem("button4", button4.textContent)
+}
+
+if(counter === 5){
+    button5.textContent = inputStorage;
+    localStorage.setItem("button5", button5.textContent)
+}
+
+if(counter === 6){
+    button6.textContent = inputStorage;
+    localStorage.setItem("button6", button6.textContent)
+}
+
+if(counter === 7){
+    button7.textContent = inputStorage;
+    localStorage.setItem("button7", button7.textContent)
+}
+
+if(counter === 8){
+    button8.textContent = inputStorage;
+    localStorage.setItem("button8", button8.textContent)
+}
+
+if(counter === 8){
+    counter = 0;
+}
+
+}
+
+function getStorage(){
+
+    if(localStorage.getItem("button1") != null){
+        button1.textContent = localStorage.getItem("button1");
+    }
+
+    if(localStorage.getItem("button2") != null){
+        button2.textContent = localStorage.getItem("button2");
+    }
+
+    if(localStorage.getItem("button3") != null){
+        button3.textContent = localStorage.getItem("button3");
+    }
+
+    if(localStorage.getItem("button4") != null){
+        button4.textContent = localStorage.getItem("button4"); 
+    }
+
+    if(localStorage.getItem("button5") != null){
+        button5.textContent = localStorage.getItem("button5");
+    }
+
+    if(localStorage.getItem("button6") != null){
+        button6.textContent = localStorage.getItem("button6");
+    }
+
+    if(localStorage.getItem("button7") != null){
+        button7.textContent = localStorage.getItem("button7");
+    }
+
+    if(localStorage.getItem("button8") != null){
+        button8.textContent = localStorage.getItem("button8");
+    } 
+}
+
 getApi(placeholder);
+getStorage();
 
 function saveSearch(){
     var inputStorage = inputS.value;
     console.log(inputStorage);
     getApi(inputStorage);
+    storeSearch(inputStorage)
 }
 
 buttonS.addEventListener("click", saveSearch);
