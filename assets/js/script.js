@@ -7,6 +7,7 @@ var wind = document.getElementById("windN");
 var humidityN = document.getElementById("humidityN");
 var uvIndexN = document.getElementById("uvIN");
 var fiveDay = document.getElementById("fiveDay");
+var cityBox = document.getElementById("cityBox");
 var counter = 0;
 
 var button1 = document.getElementById("button1");
@@ -23,7 +24,7 @@ var placeholder = "Seattle";
 var dateN = moment().format("MMMM Do YYYY");
 //console.log(dateN);
 
-
+//API request for this Days weather & 5 Day lookahead//
 function getApi(inputStorage){
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + inputStorage +",us&units=imperial&APPID=d38851407b874b51cfa24d8ab452271a";
     var fiveRequestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputStorage + ",us&units=imperial&appid=d38851407b874b51cfa24d8ab452271a";
@@ -94,11 +95,20 @@ function getApi(inputStorage){
 });
 }
 
+//If statements to loop through Buttons So user can save multiple searches//
 function storeSearch(inputStorage){
 
+if (localStorage.getItem("counter") != null){
+    counter = localStorage.getItem("counter");  
+}
+
+if(counter > 8){
+    counter = 0;
+}
 
 counter++;
 console.log(counter);
+localStorage.setItem("counter", counter);
 
 if (counter === 1){
     button1.textContent = inputStorage;
@@ -140,12 +150,9 @@ if(counter === 8){
     localStorage.setItem("button8", button8.textContent)
 }
 
-if(counter === 8){
-    counter = 0;
 }
 
-}
-
+//Get Storage and Set Text Content In Buttons//
 function getStorage(){
 
     if(localStorage.getItem("button1") != null){
@@ -181,6 +188,17 @@ function getStorage(){
     } 
 }
 
+function buttonEvent (event){
+    var element = event.target;
+    console.log(element);
+
+    if (element.matches("button")){
+
+    var buttonResearch = element.textContent;
+    getApi(buttonResearch);
+    }      
+}
+
 getApi(placeholder);
 getStorage();
 
@@ -191,4 +209,10 @@ function saveSearch(){
     storeSearch(inputStorage)
 }
 
+//Search Button from Search Bar//
 buttonS.addEventListener("click", saveSearch);
+
+//Search Button from Saved Buttons//
+cityBox.addEventListener("click", function (event){
+    buttonEvent (event);
+})
