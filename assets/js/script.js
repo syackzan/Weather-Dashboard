@@ -45,23 +45,31 @@ function getApi(inputStorage){
         console.log(data);
         for (var i = 0; i < data.list.length; i++){
             
-            if ((8 % i) === 0){
+            if ((i % 8) === 0){
             var futureBox = document.createElement("div");
             var dateF = document.createElement("p");
-            var iconF = document.createElement("p");
+            var iconF = document.createElement("img");
             var tempF = document.createElement("p");
             var windF = document.createElement("p");
             var humidityF = document.createElement("p");
 
             dateF.textContent = data.list[i].dt_txt;
-            iconF.textContent = data.list[i].weather[0].icon;
-            tempF.textContent = data.list[i].main.temp;
-            windF.textContent = data.list[i].wind.speed;
-            humidityF.textContent = data.list[i].main.humidity;
+            dateF.textContent = dateF.textContent.substr(0, 10);
+            dateF.textContent = dateF.textContent.substr(5);
+            dateF.textContent = dateF.textContent.replace("-", "/");
+            dateF.textContent = dateF.textContent + "/2021"
+            iconF.src = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png"; 
+            tempF.textContent = "Temp: " + data.list[i].main.temp + "°F";
+            windF.textContent = "Wind: " + data.list[i].wind.speed + "mph";
+            humidityF.textContent = "Humi: " + data.list[i].main.humidity + "%";
             console.log(dateF);
 
             futureBox.classList.add("borderA");
+            futureBox.classList.add("p-3");
+            futureBox.classList.add("bg-info");
+            futureBox.classList.add("text-light")
             futureBox.setAttribute("style", "width: 150px; min-height: 207px; margin: 5px 20px")
+            dateF.setAttribute("style", "font-weight: bold; font-size: 16px; border-bottom: 2px solid white; text-align: center");
             fiveDay.appendChild(futureBox);
             futureBox.appendChild(dateF);
             futureBox.appendChild(iconF);
