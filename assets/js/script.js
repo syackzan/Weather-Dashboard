@@ -1,9 +1,15 @@
 console.log("hello");
-var button1 = document.getElementById("button1");
+var buttonS = document.getElementById("buttonS");
+var inputS = document.getElementById("inputSearch")
+var city = document.getElementById("cityS");
+var temp = document.getElementById("tempN");
+var wind = document.getElementById("windN");
+var humidityN = document.getElementById("humidityN");
+var uvIndexN = document.getElementById("uvIN");
+
 
 function getApi(){
-    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=d38851407b874b51cfa24d8ab452271a";
-    //https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=d38851407b874b51cfa24d8ab452271a
+    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=Atlanta,us&APPID=d38851407b874b51cfa24d8ab452271a";
     console.log(requestUrl);
 
     fetch(requestUrl)
@@ -17,4 +23,11 @@ function getApi(){
     });
 }
 
-button1.addEventListener("click", getApi)
+getApi();
+
+function saveSearch(){
+    var inputStorage = inputS.value;
+    console.log(inputStorage);
+}
+
+buttonS.addEventListener("click", saveSearch);
