@@ -2,6 +2,7 @@ console.log("hello");
 var buttonS = document.getElementById("buttonS");
 var inputS = document.getElementById("inputSearch")
 var city = document.getElementById("cityS");
+var myCityIcon = document.getElementById("myCityIcon");
 var temp = document.getElementById("tempN");
 var wind = document.getElementById("windN");
 var humidityN = document.getElementById("humidityN");
@@ -39,13 +40,16 @@ function getApi(inputStorage){
             return response.json()
         })
         .then(function(data){
-            //console.log(data);
+            console.log(data);
             
+            city.href
             city.textContent = data.name + " (" + dateN + ")";
+            myCityIcon.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"; 
+            console.log(myCityIcon.src);
             temp.textContent = "Temp: " + data.main.temp + "°F";
             wind.textContent = "Wind: " + data.wind.speed + "mph";
             humidityN.textContent = "Humidity: " + data.main.humidity + "%";
-            uvIndexN.textContent = "UV Index: " + (data.main.pressure * .01);
+            uvIndexN.textContent = "UV Index: " + (data.main.pressure);
     });
 
     //Five Day Forecast//
@@ -56,7 +60,7 @@ function getApi(inputStorage){
         return response.json()
     })
     .then(function(data){
-        //console.log(data);
+        console.log(data);
         fiveDay.innerHTML = "";
         
         for (var i = 0; i < data.list.length; i++){
