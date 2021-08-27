@@ -32,5 +32,7 @@ THEN I am again presented with current and future conditions for that city
 
 Link: https://syackzan.github.io/Weather-Dashboard/
 
+<img src="./assets/images/websiteImage.png" alt="Website Image" />
+
 
 
